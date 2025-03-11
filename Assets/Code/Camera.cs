@@ -1,20 +1,30 @@
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class FirstPersonCamera : MonoBehaviour
 {
-    public Transform player;
-    public float cameraDistance = 5f; 
-    public float smoothSpeed = 0.125f; 
+    public Transform playerTransform; // Reference to the player's transform
+    public float mouseSensitivity = 2f;
+    public float cameraDistance = 2f;
 
-    void LateUpdate()
+    private float horizontalRotation = 0f;
+    private float verticalRotation = 0f;
+
+    void Start()
     {
-      
-        Vector3 targetPosition = player.position - player.forward * cameraDistance;
+        Cursor.lockState = CursorLockMode.Locked;
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
 
-        
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
+    void Update()
+    {
+        // Mouse Look (Control Camera Rotation)
+        horizontalRotation += Input.GetAxis("Mouse X") * mouseSensitivity;
+        verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-       
-        transform.LookAt(player);
+        transform.eulerAngles = new Vector3(verticalRotation, horizontalRotation, 0f);
+
+        // Camera Movement
+        transform.position = playerTransform.position + playerTransform.forward * cameraDistance;
     }
 }
