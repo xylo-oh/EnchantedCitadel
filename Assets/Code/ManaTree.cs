@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ManaTree : MonoBehaviour
 {
-    public GameObject manaCrystalPrefab;
+    public GameObject crystal;
     public float spawnInterval = 5f;
     public int initialSpawnAmount = 1;
     public int increasePerRound = 1;
@@ -18,7 +18,7 @@ public class ManaTree : MonoBehaviour
 
         for (int i = 0; i < spawnAmount; i++)
         {
-            Instantiate(manaCrystalPrefab, transform.position, Quaternion.identity);
+            Instantiate(crystal, transform.position, Quaternion.identity);
         }
 
 
