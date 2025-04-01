@@ -3,22 +3,22 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; // Array to hold your enemy prefabs
-    public float[] spawnIntervals; // Array to store spawn intervals for each difficulty
-    public int[] enemiesPerWave; // Array to define enemies per wave for each difficulty
-    public float spawnDuration = 30f; // Total time to spawn enemies
+    public GameObject[] enemyPrefabs; 
+    public float[] spawnIntervals; 
+    public int[] enemiesPerWave; 
+    public float spawnDuration = 30f; 
 
-    public int[] enemySpawnWeights; // Array to define spawn weights for each enemy type
+    public int[] enemySpawnWeights;
 
     private int currentWave = 0;
-    private int currentDifficulty = 0; // 0: Easy, 1: Medium, 2: Hard
+    private int currentDifficulty = 0; 
 
     void Start()
     {
         StartCoroutine(SpawnEnemies());
 
-        // Example spawn weights:
-        enemySpawnWeights = new int[] { 3, 1, 1 }; // Weak: 3, Medium: 1, Strong: 1
+        
+        enemySpawnWeights = new int[] { 3, 1, 1 }; 
     }
 
     private IEnumerator SpawnEnemies()
@@ -31,17 +31,17 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(spawnIntervals[currentDifficulty]);
             }
             currentWave++;
-            yield return new WaitForSeconds(2f); // Pause between waves
+            yield return new WaitForSeconds(2f); 
         }
     }
 
     private void SpawnWave()
     {
-        // Choose a random enemy prefab based on weights
+       
         int randomEnemyIndex = WeightedRandom.GetRandomIndex(enemySpawnWeights);
         GameObject enemyToSpawn = enemyPrefabs[randomEnemyIndex];
 
-        // Instantiate the enemy at a random position
+        
         Instantiate(enemyToSpawn, new Vector3(Random.Range(-5f, 5f), 0, 0), Quaternion.identity);
     }
 
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     }
 }
 
-// Helper class for weighted random selection
+
 public static class WeightedRandom
 {
     public static int GetRandomIndex(int[] weights)
