@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mutant Walking
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ac84c7180140fa54f8ab2921bbd096dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
@@ -1472,6 +1476,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a823b966e67eb4498481b36d32f6b6, type: 3}
+--- !u!1001 &1905317918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.666154
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.87
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
+      propertyPath: m_Name
+      value: ShopKepper2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3c6180a66b3e8243a34e579bfe08351, type: 3}
 --- !u!1 &1958526920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ad0d402ac124eb40a94ce77a8e1ac71, type: 3}
@@ -1671,3 +1732,4 @@ SceneRoots:
   - {fileID: 364859098}
   - {fileID: 543254418}
   - {fileID: 1642221590}
+  - {fileID: 1905317918}
