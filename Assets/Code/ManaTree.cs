@@ -23,7 +23,7 @@ public class ManaTree : MonoBehaviour
 
             Vector3 spawnPosition = Random.insideUnitCircle * spawnRadius;
             
-            spawnPosition.z = **1f * *; 
+           
 
 
             spawnPosition += transform.position;
