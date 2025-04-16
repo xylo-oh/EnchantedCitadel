@@ -12,8 +12,6 @@ public class EnemySpawner : MonoBehaviour
 
     private int currentWave = 0;
     private int currentDifficulty = 0; 
-  private float manaPickupCooldown = 0.5f;
-    private float lastPickupTime = 0f;
 
     void Start()
     {
@@ -50,30 +48,6 @@ public class EnemySpawner : MonoBehaviour
     public void SetDifficulty(int difficulty)
     {
         currentDifficulty = difficulty;
-    }
-
-    void Update()
-    {
-        
-        isGrounded = Physics.CheckSphere(transform.position, 0.1f, LayerMask.GetMask("Ground"));
-
-        
-    }
-
-    void FixedUpdate()
-    {
-        if (Time.time - lastPickupTime >= manaPickupCooldown)
-        {
-            Collider[] nearbyCrystals = Physics.OverlapSphere(transform.position, manaPickupRadius);
-            foreach (Collider crystalCollider in nearbyCrystals)
-            {
-                if (crystalCollider.CompareTag("ManaCrystal"))
-                {
-                    Destroy(crystalCollider.gameObject);
-                    lastPickupTime = Time.time;
-                }
-            }
-        }
     }
 }
 
