@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public CanvasGropu OptionPanel;
+    public CanvasGroup OptionPanel;
 
-    public viod PlayGame()
+    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
