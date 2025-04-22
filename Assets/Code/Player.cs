@@ -1,70 +1,122 @@
+//#define USE_CROUCH
+#define MOUSE_SMOOTHING
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public float speed = 5f;
-    public float mouseSensitivity = 2f;
-    public float jumpHeight = 2f;
-    public float manaPickupRadius = 2f;
+    public Camera playerCamera;
+    public float moveSpeed = 5.0f;
+    public float rotationSpeed = 3.0f;
 
-    public Transform playerCamera;
-    public Transform playerBody;
+    private CharacterController controller;
+    private Vector3 move_input;
+    private Vector3 move_direction;
+    private Vector3 move_vector;
+    private Vector3 vector_down;
+    private Quaternion player_rotation;
+    private float look_y = 0.0f;
 
-    private float horizontalRotation = 0f;
-    private float verticalRotation = 0f;
-    private bool isGrounded = true;
-    private Rigidbody rb;
+    public int crystalCount = 0; // Track the number of crystals collected
 
     void Start()
     {
+        controller = GetComponent<CharacterController>();
+        if (controller == null)
+        {
+            Debug.LogError("CharacterController is not attached to the Player GameObject!");
+        }
+
+        vector_down = Vector3.down; // Initialize vector_down to point downward
+        player_rotation = transform.rotation; // Initialize player_rotation
         Cursor.lockState = CursorLockMode.Locked;
-        rb = GetComponent<Rigidbody>();
-        playerCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        Cursor.visible = false;
     }
 
     void Update()
     {
-        
-        horizontalRotation += Input.GetAxis("Mouse X") * mouseSensitivity;
-        verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-
-        playerCamera.transform.eulerAngles = new Vector3(verticalRotation, horizontalRotation, 0f);
-        playerBody.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
-
-        
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
-        movement = playerCamera.transform.TransformDirection(movement);
-        movement.Normalize(); 
-
-        
-        rb.linearVelocity = new Vector3(movement.x * speed, rb.linearVelocity.y, movement.z * speed);
-
-        
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpHeight, rb.linearVelocity.z);
-            isGrounded = false;
-        }
-
-        
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        HandleInput();
+        HandleMovement();
+        HandleCamera();
     }
 
-    void FixedUpdate()
+    private void HandleInput()
     {
-        
-        Collider[] nearbyCrystals = Physics.OverlapSphere(transform.position, manaPickupRadius);
+        // Get movement input
+        move_input.x = Input.GetAxisRaw("Horizontal");
+        move_input.z = Input.GetAxisRaw("Vertical");
 
-        foreach (Collider crystalCollider in nearbyCrystals)
+        // Get mouse input for rotation
+        float rotation_input = Input.GetAxis("Mouse X") * rotationSpeed;
+        float look_input = Input.GetAxis("Mouse Y") * rotationSpeed * 0.9f; // Make vertical mouse look less sensitive
+
+        // Update player rotation
+        player_rotation *= Quaternion.Euler(0, rotation_input, 0);
+
+        // Update camera vertical rotation
+        look_y -= look_input;
+        look_y = Mathf.Clamp(look_y, -90.0f, 90.0f);
+    }
+
+    private void HandleMovement()
+    {
+        // Apply player rotation to movement direction
+        move_direction = player_rotation * move_input.normalized;
+
+        // Apply gravity and handle jumping
+        if (controller.isGrounded)
         {
-            if (crystalCollider.CompareTag("ManaCrystal"))
+            move_vector.y = -1f; // Small downward force to keep grounded
+
+            // Check for jump input
+            if (Input.GetButtonDown("Jump"))
             {
-                Destroy(crystalCollider.gameObject);
+                move_vector.y = 5.8f; // Apply jump velocity (adjust as needed)
             }
         }
+        else
+        {
+            // Apply gravity when in the air
+            move_vector.y += Physics.gravity.y * Time.deltaTime;
+        }
+
+        // Combine movement direction with gravity
+        move_vector.x = move_direction.x * moveSpeed;
+        move_vector.z = move_direction.z * moveSpeed;
+
+        // Move the player
+        controller.Move(move_vector * Time.deltaTime);
     }
+
+    private void HandleCamera()
+    {
+        // Apply horizontal rotation to the player
+        transform.rotation = player_rotation;
+
+        // Apply vertical rotation to the camera
+        playerCamera.transform.localRotation = Quaternion.Euler(look_y, 0, 0);
+    }
+
+    public void AddCrystal()
+    {
+        crystalCount++;
+        Debug.Log("Crystals Collected: " + crystalCount);
+    }
+}
+
+[CreateAssetMenu(fileName = "PlayerConfig", menuName = "Configs/PlayerConfig")]
+public class PlayerConfig : ScriptableObject
+{
+    public float moveSpeed = 5.0f;
+    public float rotationSpeed = 3.0f;
+    public float friction = 5.0f;
+    public float deccSpeed = 3.5f;
+    public float accSpeed = 10.0f;
+    public float accSpeedAir = 1.5f;
+    public float jumpVelocity = 5.8f;
+    public float jumpAcceleration = 1.42f;
+    public float gravity = 17.0f;
+    public float cameraOffset = 0.72f;
+    public float playerHeight = 1.8f;
 }

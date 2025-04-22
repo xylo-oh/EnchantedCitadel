@@ -20,14 +20,14 @@ public class ManaTree : MonoBehaviour
 
         for (int i = 0; i < spawnAmount; i++)
         {
+            // Generate a random position within a circle
+            Vector2 randomCircle = Random.insideUnitCircle.normalized * Random.Range(spawnRadius * 0.5f, spawnRadius);
+            Vector3 spawnPosition = new Vector3(randomCircle.x, 0.5f, randomCircle.y);
 
-            Vector3 spawnPosition = Random.insideUnitCircle * spawnRadius;
-            
-           
-
-
+            // Offset the position relative to the tree's position
             spawnPosition += transform.position;
 
+            // Instantiate the crystal
             Instantiate(crystal, spawnPosition, Quaternion.identity);
         }
 
