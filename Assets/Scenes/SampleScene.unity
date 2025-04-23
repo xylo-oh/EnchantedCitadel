@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.23
+      value: -27.599998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -801,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_Name
-      value: Mutant Walking
+      value: Mutant
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_Controller
@@ -816,6 +816,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1023380088}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1023380091}
   m_SourcePrefab: {fileID: 100100000, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
 --- !u!1001 &575701552
 PrefabInstance:
@@ -2099,6 +2102,18 @@ MonoBehaviour:
   m_PositionUnits: 1
   m_Speed: 5
   m_Position: 0
+--- !u!114 &1023380091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023380085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498763b2436cbac40afe15528ec31cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1080967947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,7 +4140,7 @@ Transform:
   m_GameObject: {fileID: 2087186475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.31, y: 0.59, z: -28.34}
+  m_LocalPosition: {x: 11.31, y: 0.59, z: -28.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4153,20 +4168,20 @@ MonoBehaviour:
   - position: {x: 0, y: 0, z: -5}
     tangent: {x: 1, y: 0, z: 0}
     roll: 0
-  - position: {x: -3.4, y: 0, z: 3.6859837}
-    tangent: {x: -5.49, y: 0, z: 0.24012375}
+  - position: {x: -3.4, y: 0, z: 3.8468094}
+    tangent: {x: -5.4899993, y: 0, z: -1.7370205}
     roll: 0
-  - position: {x: -9.45, y: 0, z: 9.62}
-    tangent: {x: 6.62, y: 0, z: -0.35049248}
+  - position: {x: -9.412754, y: -0.005206108, z: 10.134969}
+    tangent: {x: 7.346698, y: 0, z: 1.4507856}
     roll: 0
-  - position: {x: 9.77, y: 0, z: 14.97}
-    tangent: {x: -6.23, y: 0, z: 7.8}
+  - position: {x: 9.658853, y: 0, z: 14.121414}
+    tangent: {x: -6.23, y: 0, z: 6.550482}
     roll: 0
-  - position: {x: 1.99, y: 0, z: 15.8}
-    tangent: {x: -0.6440644, y: 0, z: 3.6570597}
+  - position: {x: 1.3272865, y: 0, z: 17.424297}
+    tangent: {x: -0.6440644, y: 0, z: 4.447233}
     roll: 0
-  - position: {x: 0.032623768, y: 0, z: 45.174667}
-    tangent: {x: -0.6440644, y: 0, z: 5.304426}
+  - position: {x: 1.0375738, y: 0, z: 50.53988}
+    tangent: {x: 0.050826073, y: 0, z: 8.63308}
     roll: 0
 --- !u!1001 &2122103771
 PrefabInstance:
