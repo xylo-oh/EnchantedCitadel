@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.72000027
+      value: -17.742245
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.599998
+      value: -58.168022
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ac84c7180140fa54f8ab2921bbd096dd, type: 2}
+    - target: {fileID: 5866666021909216657, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
@@ -2244,7 +2248,7 @@ MonoBehaviour:
   m_Path: {fileID: 2087186477}
   m_UpdateMethod: 0
   m_PositionUnits: 1
-  m_Speed: 5
+  m_Speed: 1
   m_Position: 0
 --- !u!65 &1023380094
 BoxCollider:
@@ -4459,7 +4463,7 @@ Transform:
   m_GameObject: {fileID: 2087186475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.31, y: 0.59, z: -28.71}
+  m_LocalPosition: {x: 10.98, y: 0.59, z: -28.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4484,20 +4488,20 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 0, z: -5}
-    tangent: {x: 1, y: 0, z: 0}
+  - position: {x: -18.132244, y: 0, z: -35.568024}
+    tangent: {x: 22.838234, y: 0, z: 0}
     roll: 0
-  - position: {x: -3.4, y: 0, z: 3.8468094}
-    tangent: {x: -5.4899993, y: 0, z: -1.7370205}
+  - position: {x: -0.27948642, y: 0, z: 3.5396156}
+    tangent: {x: -0.76205564, y: 0, z: 1.5675278}
     roll: 0
-  - position: {x: -9.412754, y: -0.005206108, z: 10.134969}
-    tangent: {x: 7.346698, y: 0, z: 1.4507856}
+  - position: {x: -11.915253, y: -0.005206108, z: 7.584159}
+    tangent: {x: 1.0715933, y: 0, z: 4.919797}
     roll: 0
-  - position: {x: 9.658853, y: 0, z: 14.121414}
-    tangent: {x: -6.23, y: 0, z: 6.550482}
+  - position: {x: 11.016896, y: 0, z: 12.751703}
+    tangent: {x: -0.6700001, y: 0, z: 5.62831}
     roll: 0
-  - position: {x: 1.3272865, y: 0, z: 17.424297}
-    tangent: {x: -0.6440644, y: 0, z: 4.447233}
+  - position: {x: 1.4436259, y: 0, z: 18.297367}
+    tangent: {x: -0.16804433, y: 0, z: 4.764595}
     roll: 0
   - position: {x: 1.0375738, y: 0, z: 50.53988}
     tangent: {x: 0.050826073, y: 0, z: 8.63308}
