@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ManaCrystal
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
