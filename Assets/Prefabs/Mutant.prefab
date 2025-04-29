@@ -84,9 +84,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8095480864736234076}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7490285883586446383}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       insertIndex: -1
@@ -94,29 +91,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
       insertIndex: -1
       addedObject: {fileID: -465531465125821784}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1623921605798157313}
   m_SourcePrefab: {fileID: 100100000, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
 --- !u!1 &1752252370322445135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e35321d60a045b04cab4411c999e7adb, type: 3}
   m_PrefabInstance: {fileID: 1481730383307009566}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8095480864736234076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752252370322445135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Path: {fileID: 0}
-  m_UpdateMethod: 0
-  m_PositionUnits: 1
-  m_Speed: 1
-  m_Position: 0
 --- !u!65 &7490285883586446383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -177,3 +160,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d8ea82f0205614a8b00a4484080b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1623921605798157313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752252370322445135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SplineSettings:
+    Spline: {fileID: 0}
+    Position: 0
+    Units: 0
+  UpdateMethod: 0
+  AutomaticDolly:
+    Enabled: 1
+    Method:
+      rid: 5884523133239296066
+  TrackingTarget: {fileID: 0}
+  m_LegacyPosition: -1
+  m_LegacyUnits: 0
+  m_LegacySpline: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5884523133239296066
+      type: {class: SplineAutoDolly/FixedSpeed, ns: Unity.Cinemachine, asm: Unity.Cinemachine}
+      data:
+        Speed: 1

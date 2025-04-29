@@ -48,9 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1623921605798157313, guid: 91e0b10d2cd86694686e56a6d7dd33dc, type: 3}
+      propertyPath: AutomaticDolly.Method
+      value: 5884523133239296067
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623921605798157313, guid: 91e0b10d2cd86694686e56a6d7dd33dc, type: 3}
+      propertyPath: 'managedReferences[5884523133239296067]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623921605798157313, guid: 91e0b10d2cd86694686e56a6d7dd33dc, type: 3}
+      propertyPath: managedReferences[5884523133239296067].Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1752252370322445135, guid: 91e0b10d2cd86694686e56a6d7dd33dc, type: 3}
       propertyPath: m_Name
-      value: Mutant Variant
+      value: Quick Mutant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

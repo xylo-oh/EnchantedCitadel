@@ -10,7 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4909432203364383529, guid: b76c5bbfba5a0d6478f1bca333b64301, type: 3}
       propertyPath: m_Name
-      value: Mutant Variant 1
+      value: Tank Mutant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402589696300430439, guid: b76c5bbfba5a0d6478f1bca333b64301, type: 3}
+      propertyPath: AutomaticDolly.Method
+      value: 5884523133239296068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402589696300430439, guid: b76c5bbfba5a0d6478f1bca333b64301, type: 3}
+      propertyPath: 'managedReferences[5884523133239296068]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402589696300430439, guid: b76c5bbfba5a0d6478f1bca333b64301, type: 3}
+      propertyPath: managedReferences[5884523133239296068].Speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5722419534486692243, guid: b76c5bbfba5a0d6478f1bca333b64301, type: 3}
       propertyPath: m_LocalPosition.x
