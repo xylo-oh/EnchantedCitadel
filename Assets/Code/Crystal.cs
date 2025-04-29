@@ -6,7 +6,6 @@ public class Crystal : MonoBehaviour
 
     void Start()
     {
-        // Ensure the crystal has a Rigidbody
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -14,28 +13,18 @@ public class Crystal : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // Optional: Add behavior when the crystal hits the ground
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            // Stop the crystal from moving after it lands
-            rb.isKinematic = true;
-        }
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Call the AddCrystal method on the player
+            Debug.Log("Player collided with the crystal!"); // Debugging line
+
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.AddCrystal();
             }
 
-            // Destroy the crystal after it is picked up
             Destroy(gameObject);
         }
     }

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -18,9 +20,10 @@ public class Player : MonoBehaviour
     private Vector3 vector_down;
     private Quaternion player_rotation;
     private float look_y = 0.0f;
-    public GameObject Sword; 
+    public GameObject Sword;
 
     public int crystalCount = 0; // Track the number of crystals collected
+    public TMP_Text crystalCountText; // Use TMP_Text for TextMeshPro
 
     void Start()
     {
@@ -34,6 +37,8 @@ public class Player : MonoBehaviour
         player_rotation = transform.rotation; // Initialize player_rotation
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        UpdateCrystalUI(); // Initialize the UI with the current crystal count
     }
 
     void Update()
@@ -42,16 +47,14 @@ public class Player : MonoBehaviour
         HandleMovement();
         HandleCamera();
 
- 
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(ATTACK());
         }
-  
     }
 
     IEnumerator ATTACK()
-    { 
+    {
         Sword.GetComponent<Animator>().Play("Attack");
         yield return new WaitForSeconds(0.5f);
         Sword.GetComponent<Animator>().Play("Idle");
@@ -118,10 +121,21 @@ public class Player : MonoBehaviour
     {
         crystalCount++;
         Debug.Log("Crystals Collected: " + crystalCount);
+        UpdateCrystalUI(); // Update the UI when a crystal is collected
     }
 
- 
+    private void UpdateCrystalUI()
+    {
+        if (crystalCountText != null)
+        {
+            crystalCountText.text = "Crystals: " + crystalCount; // Update the UI text
+        }
+        else
+        {
+            Debug.LogError("Crystal Count Text UI is not assigned!");
+        }
     }
+}
 
     [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Configs/PlayerConfig")]
     public class PlayerConfig : ScriptableObject
