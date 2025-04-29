@@ -11,9 +11,11 @@ public class Mutant : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Check if the colliding object has the tag "Weapon"
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
+
         if (collision.gameObject.CompareTag("Weapon"))
         {
+            Debug.Log("Weapon hit detected!");
             TakeDamage(2); // Sword does 2 damage
         }
     }

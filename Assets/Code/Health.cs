@@ -2,10 +2,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine;
 
-using UnityEngine;
-using UnityEngine.UI; // Required for UI components
-using UnityEngine.Events; // Required for UnityEvent
-using TMPro; // Required for TextMeshPro
+
 
 public class Health : MonoBehaviour
 {
