@@ -740,11 +740,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd7ddd587395c24f8257fc562845d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  mouseSensitivity: 2
-  jumpHeight: 2
-  manaPickupRadius: 2
   playerCamera: {fileID: 692341646}
+  moveSpeed: 5
+  rotationSpeed: 3
+  Sword: {fileID: 0}
+  crystalCount: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
