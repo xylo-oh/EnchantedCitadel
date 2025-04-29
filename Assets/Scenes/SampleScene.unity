@@ -1580,13 +1580,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1669893130}
   moveSpeed: 5
   rotationSpeed: 3
-  attackDistance: 3
-  attackDelay: 0.4
-  attackSpeed: 1
-  attackDamage: 1
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  Sword: {fileID: 1838005030}
   crystalCount: 0
 --- !u!23 &755677753
 MeshRenderer:
@@ -2372,7 +2366,7 @@ MonoBehaviour:
   m_Path: {fileID: 2087186477}
   m_UpdateMethod: 0
   m_PositionUnits: 1
-  m_Speed: 1
+  m_Speed: 2
   m_Position: 0
 --- !u!65 &1023380094
 BoxCollider:

@@ -7,11 +7,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public const string IDLE = "Idle";
-    public const string ATTACK = "Attack";
-    string currentAnimationState;
-
-    Animator animator;
     public Camera playerCamera;
     public float moveSpeed = 5.0f;
     public float rotationSpeed = 3.0f;
@@ -23,23 +18,7 @@ public class Player : MonoBehaviour
     private Vector3 vector_down;
     private Quaternion player_rotation;
     private float look_y = 0.0f;
-
-    public float attackDistance = 3f;
-    public float attackDelay = 0.4f;
-    public float attackSpeed = 1f;
-    public float attackDamage = 1;
-    public LayerMask attackLayer;
-
-    bool attacking = false;
-    bool attackReady = true;
-    bool isGrounded;
-
-    void Awake()
-    {
-        controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
-
-    }
+    public GameObject Sword; 
 
     public int crystalCount = 0; // Track the number of crystals collected
 
@@ -63,12 +42,19 @@ public class Player : MonoBehaviour
         HandleMovement();
         HandleCamera();
 
-        isGrounded = controller.isGrounded;
+ 
         if (Input.GetMouseButtonDown(0))
         {
-            Attack();
+            StartCoroutine(ATTACK());
         }
-        SetAnimations();
+  
+    }
+
+    IEnumerator ATTACK()
+    { 
+        Sword.GetComponent<Animator>().Play("Attack");
+        yield return new WaitForSeconds(0.5f);
+        Sword.GetComponent<Animator>().Play("Idle");
     }
 
     private void HandleInput()
@@ -134,37 +120,7 @@ public class Player : MonoBehaviour
         Debug.Log("Crystals Collected: " + crystalCount);
     }
 
-    public void Attack()
-    {
-        if (!attackReady || attacking) return;
-        attacking = true;
-        attackReady = false;
-        Invoke(nameof(ResetAttack), attackSpeed);
-
-        ChangeAnimationState(ATTACK);
-
-    }
-
-    private void ResetAttack()
-    {
-        attacking = false;
-        attackReady = true;
-    }
-    
-
-    public void ChangeAnimationState(string newState)
-    {
-        if (currentAnimationState == newState) return;
-        currentAnimationState = newState;
-        animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
-    }
-
-    void SetAnimations()
-    {
-        if (!attacking)
-        {
-            ChangeAnimationState(IDLE);
-        }
+ 
     }
 
     [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Configs/PlayerConfig")]
@@ -182,4 +138,3 @@ public class Player : MonoBehaviour
         public float cameraOffset = 0.72f;
         public float playerHeight = 1.8f;
     }
-}
