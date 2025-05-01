@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Crystal : MonoBehaviour
 {
@@ -6,10 +7,10 @@ public class Crystal : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        if (rb == null)
+        if (!TryGetComponent(out rb))
         {
             Debug.LogError("Rigidbody is not attached to the Crystal prefab!");
+            enabled = false; // Disable the script to prevent further errors
         }
     }
 
@@ -17,16 +18,15 @@ public class Crystal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player collided with the crystal!"); // Debugging line
-
+#if UNITY_EDITOR
+            Debug.Log("Player collided with the crystal!");
+#endif
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.AddCrystal();
             }
-
             Destroy(gameObject);
         }
     }
 }
-
