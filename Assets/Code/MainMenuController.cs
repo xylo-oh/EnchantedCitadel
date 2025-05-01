@@ -12,8 +12,14 @@ public class MainMenuController : MonoBehaviour
     public void Option()
     {
         OptionPanel.alpha = 1;
+        OptionPanel.blocksRaycasts = true;
+    }
+    public void Back()
+    {
+        OptionPanel.alpha = 0;
         OptionPanel.blocksRaycasts = false;
     }
+
 
     public void QuitGame()
     {

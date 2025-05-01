@@ -4075,7 +4075,7 @@ MonoBehaviour:
   maxHealth: 100
   healthText: {fileID: 1610106536}
   gameOverPanel: {fileID: 1251031989}
-  damagePerHit: 10
+  damagePerHit: 100
   onGameOver:
     m_PersistentCalls:
       m_Calls:
