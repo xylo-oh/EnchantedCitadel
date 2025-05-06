@@ -100,4 +100,14 @@ public class Health : MonoBehaviour
 
         Time.timeScale = 1; // Resume the game
     }
+    public void IncreaseHealth(int amount)
+    {
+        if (amount <= 0) return; // Ignore invalid values
+
+        currentHealth += amount; // Increase health
+        currentHealth = Mathf.Min(currentHealth, maxHealth); // Clamp health to maxHealth
+        UpdateHealthUI(); // Update the health display
+
+        Debug.Log($"Health increased by {amount}. Current health: {currentHealth}");
+    }
 }

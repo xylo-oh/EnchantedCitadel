@@ -11,11 +11,21 @@ public class Mutant : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.CompareTag("Weapon"))
         {
             Debug.Log("Weapon hit detected!");
-            TakeDamage(2); 
+
+            // Get the Player reference
+            Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            if (player != null)
+            {
+                int totalDamage = 2 + player.damageModifier; // Base damage + modifier
+                TakeDamage(totalDamage);
+            }
+            else
+            {
+                Debug.LogError("Player not found!");
+            }
         }
     }
 
