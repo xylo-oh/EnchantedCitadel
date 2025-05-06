@@ -2,28 +2,26 @@ using UnityEngine;
 
 public class Mutant : MonoBehaviour
 {
-    private int health = 10; // Enemy starts with 10 health
+    private int health = 10; 
 
     void Start()
     {
-        Debug.Log("Mutant spawned with health: " + health);
+        
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Weapon"))
         {
             Debug.Log("Weapon hit detected!");
-            TakeDamage(2); // Sword does 2 damage
+            TakeDamage(2); 
         }
     }
 
     private void TakeDamage(int damage)
     {
-        health -= damage; // Reduce health by the damage amount
-        Debug.Log("Mutant took damage! Current health: " + health);
+        health -= damage; 
 
         if (health <= 0)
         {
@@ -34,6 +32,6 @@ public class Mutant : MonoBehaviour
     private void Die()
     {
         Debug.Log("Mutant has died!");
-        Destroy(gameObject); // Destroy the enemy GameObject
+        Destroy(gameObject); 
     }
 }

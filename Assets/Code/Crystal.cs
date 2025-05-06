@@ -18,15 +18,18 @@ public class Crystal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-#if UNITY_EDITOR
             Debug.Log("Player collided with the crystal!");
-#endif
-            Player player = other.GetComponent<Player>();
+
+            Player player = other.GetComponentInParent<Player>();
             if (player != null)
             {
                 player.AddCrystal();
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            else
+            {
+                Debug.LogError("Player component not found on the collider or its parent!");
+            }
         }
     }
 }
