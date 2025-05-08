@@ -8,7 +8,6 @@ public class Shop : MonoBehaviour
 
     private GameObject shopPanel;
     public Player player;
-    private Health health;
 
 
     void Start()
@@ -57,17 +56,6 @@ public class Shop : MonoBehaviour
         if (player.crystalCount >= costofHealth)
         {
             player.crystalCount -= costofHealth;
-
-            // Find the Health component and increase health
-            Health health = health.GetComponent<Health>();
-            if (health != null)
-            {
-                health.IncreaseHealth(25); // Increase health by 25
-            }
-            else
-            {
-                Debug.LogError("Health component not found on the Player!");
-            }
 
             player.UpdateCrystalUI(); // Update the UI after purchase
             Debug.Log("Health purchased!");
