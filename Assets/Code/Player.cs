@@ -24,6 +24,12 @@ public class Player : MonoBehaviour
 
     public int crystalCount = 0; // Track the number of crystals collected
     public TMP_Text crystalCountText; // Use TMP_Text for TextMeshPro
+    public int damageModifier = 0; // Tracks the additional damage from upgrades
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -124,15 +130,11 @@ public class Player : MonoBehaviour
         UpdateCrystalUI(); // Update the UI when a crystal is collected
     }
 
-    private void UpdateCrystalUI()
+  public void UpdateCrystalUI()
     {
         if (crystalCountText != null)
         {
             crystalCountText.text = "Crystals: " + crystalCount; // Update the UI text
-        }
-        else
-        {
-            Debug.LogError("Crystal Count Text UI is not assigned!");
         }
     }
 }
