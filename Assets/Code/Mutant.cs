@@ -2,11 +2,24 @@ using UnityEngine;
 
 public class Mutant : MonoBehaviour
 {
-    private int health = 10; 
+    private int health = 10;
+    private Transform[] waypoints; // Store the assigned waypoints
 
     void Start()
     {
-        
+        // Optional: Start moving towards the first waypoint if needed
+    }
+
+    public void AssignWaypoints(Transform[] assignedWaypoints)
+    {
+        if (assignedWaypoints == null || assignedWaypoints.Length == 0)
+        {
+            Debug.LogError("No waypoints provided to Mutant!");
+            return;
+        }
+
+        waypoints = assignedWaypoints;
+        Debug.Log($"Waypoints assigned to Mutant: {waypoints.Length} waypoints.");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -31,7 +44,7 @@ public class Mutant : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        health -= damage; 
+        health -= damage;
 
         if (health <= 0)
         {
@@ -42,6 +55,6 @@ public class Mutant : MonoBehaviour
     private void Die()
     {
         Debug.Log("Mutant has died!");
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 }

@@ -13,7 +13,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         shopPanel = GameObject.Find("ShopPanel");
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        GameObject playerObject = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class Shop : MonoBehaviour
         if (player.crystalCount >= costofDamage)
         {
             player.crystalCount -= costofDamage;
-            player.damageModifier += 1; // Increase the damage modifier
-            player.UpdateCrystalUI(); // Update the UI after purchase
+            player.damageModifier += 1;
+            player.UpdateCrystalUI();
             Debug.Log("Damage purchased! Damage modifier is now: " + player.damageModifier);
         }
         else
@@ -57,7 +57,7 @@ public class Shop : MonoBehaviour
         {
             player.crystalCount -= costofHealth;
 
-            player.UpdateCrystalUI(); // Update the UI after purchase
+            player.UpdateCrystalUI(); 
             Debug.Log("Health purchased!");
         }
         else

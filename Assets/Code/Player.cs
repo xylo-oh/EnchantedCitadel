@@ -26,10 +26,6 @@ public class Player : MonoBehaviour
     public TMP_Text crystalCountText; // Use TMP_Text for TextMeshPro
     public int damageModifier = 0; // Tracks the additional damage from upgrades
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start()
     {
