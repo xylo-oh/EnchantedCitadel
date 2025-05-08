@@ -8,12 +8,25 @@ public class Shop : MonoBehaviour
 
     private GameObject shopPanel;
     public Player player;
+    private Health health;
+    public GameObject newSwordPrefab;
 
 
     void Start()
     {
         shopPanel = GameObject.Find("ShopPanel");
         GameObject playerObject = GameObject.FindWithTag("Player");
+
+        // Find the GameObject with the Health script
+        GameObject healthObject = GameObject.FindWithTag("HealthObject"); // Replace "HealthObject" with the actual tag or name
+        if (healthObject != null)
+        {
+            health = healthObject.GetComponent<Health>();
+        }
+        else
+        {
+            Debug.LogError("Health object not found! Ensure the GameObject is tagged correctly.");
+        }
     }
 
     void Update()
@@ -50,21 +63,33 @@ public class Shop : MonoBehaviour
             Debug.Log("Not enough crystals to purchase damage.");
         }
     }
+   
+        
 
-    public void buyHealth()
+public void buyHealth()
+{
+    if (player.crystalCount >= costofHealth)
     {
-        if (player.crystalCount >= costofHealth)
-        {
-            player.crystalCount -= costofHealth;
+        player.crystalCount -= costofHealth;
 
-            player.UpdateCrystalUI(); 
-            Debug.Log("Health purchased!");
+        // Increase health using the Health script
+        if (health != null)
+        {
+            health.IncreaseHealth(25); // Increase health by 25
         }
         else
         {
-            Debug.Log("Not enough crystals to purchase health.");
+            Debug.LogError("Health component not found!");
         }
+
+        player.UpdateCrystalUI(); // Update the UI after purchase
+        Debug.Log("Health purchased!");
     }
+    else
+    {
+        Debug.Log("Not enough crystals to purchase health.");
+    }
+}
 
     public void buySword()
     {
