@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - Weapon
+  - HealthObject
   layers:
   - Default
   - TransparentFX
