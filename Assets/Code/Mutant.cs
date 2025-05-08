@@ -2,11 +2,49 @@ using UnityEngine;
 
 public class Mutant : MonoBehaviour
 {
-    private int health = 10; 
+    public float speed = 10f;
+    private int wavepointIndex = 0;
+    private Transform target; 
+
+    private int health = 10;
 
     void Start()
     {
-        
+        // Ensure the Rigidbody exists and freeze rotation
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        // Initialize the target
+        target = WayPoints.points[0];
+    }
+
+    void Update()
+    {
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+        if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+        {
+            GetNextWayPoint();
+        }
+
+        void GetNextWayPoint()
+        {
+
+            if(wavepointIndex >= WayPoints.points.Length - 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            wavepointIndex++;
+            target = WayPoints.points[wavepointIndex];
+        }
+           
     }
 
     void OnCollisionEnter(Collision collision)
@@ -31,7 +69,7 @@ public class Mutant : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        health -= damage; 
+        health -= damage;
 
         if (health <= 0)
         {
@@ -42,6 +80,6 @@ public class Mutant : MonoBehaviour
     private void Die()
     {
         Debug.Log("Mutant has died!");
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 }
