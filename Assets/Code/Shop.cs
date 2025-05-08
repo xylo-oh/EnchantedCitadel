@@ -9,7 +9,6 @@ public class Shop : MonoBehaviour
     private GameObject shopPanel;
     public Player player;
     private Health health;
-    public GameObject newSwordPrefab;
 
 
     void Start()
