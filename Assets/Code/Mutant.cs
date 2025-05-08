@@ -2,24 +2,49 @@ using UnityEngine;
 
 public class Mutant : MonoBehaviour
 {
+    public float speed = 10f;
+    private int wavepointIndex = 0;
+    private Transform target; 
+
     private int health = 10;
-    private Transform[] waypoints; // Store the assigned waypoints
 
     void Start()
     {
-        // Optional: Start moving towards the first waypoint if needed
+        // Ensure the Rigidbody exists and freeze rotation
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        // Initialize the target
+        target = WayPoints.points[0];
     }
 
-    public void AssignWaypoints(Transform[] assignedWaypoints)
+    void Update()
     {
-        if (assignedWaypoints == null || assignedWaypoints.Length == 0)
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+        if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
-            Debug.LogError("No waypoints provided to Mutant!");
-            return;
+            GetNextWayPoint();
         }
 
-        waypoints = assignedWaypoints;
-        Debug.Log($"Waypoints assigned to Mutant: {waypoints.Length} waypoints.");
+        void GetNextWayPoint()
+        {
+
+            if(wavepointIndex >= WayPoints.points.Length - 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            wavepointIndex++;
+            target = WayPoints.points[wavepointIndex];
+        }
+           
     }
 
     void OnCollisionEnter(Collision collision)
