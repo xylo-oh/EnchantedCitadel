@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShopOpen : MonoBehaviour
 {
 
-    private GameObject shop; 
+    [SerializeField] private GameObject shop; // As
 
     void Start()
     {

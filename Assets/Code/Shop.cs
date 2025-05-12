@@ -1,19 +1,26 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shop : MonoBehaviour
 {
     private int costofDamage = 10;
     private int costofHealth = 20;
-    private int costofSword = 50;
+    private int costofSword = 100;
 
-    private GameObject shopPanel;
+    [SerializeField] private GameObject shopPanel;
     public Player player;
     private Health health;
+    [SerializeField] private GameObject gameWinPanel;
+    public UnityEvent onGameWin;
 
 
     void Start()
     {
         shopPanel = GameObject.Find("ShopPanel");
+        if (shopPanel == null)
+        {
+            Debug.LogError("ShopPanel not found! Ensure it exists in the scene.");
+        }
         GameObject playerObject = GameObject.FindWithTag("Player");
 
         // Find the GameObject with the Health script
@@ -26,11 +33,15 @@ public class Shop : MonoBehaviour
         {
             Debug.LogError("Health object not found! Ensure the GameObject is tagged correctly.");
         }
+        if (gameWinPanel != null)
+        {
+            gameWinPanel.SetActive(false); // Ensure the Game Over panel is hidden at the start
+        }
     }
 
     void Update()
     {
-        if (shopPanel.activeSelf)
+        if (shopPanel != null && shopPanel.activeSelf)
         {
             Debug.Log("Press 1, 2, or 3 to purchase.");
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -95,12 +106,26 @@ public void buyHealth()
         if (player.crystalCount >= costofSword)
         {
             player.crystalCount -= costofSword;
-            player.UpdateCrystalUI(); // Update the UI after purchase
-            Debug.Log("Sword purchased!");
+            player.UpdateCrystalUI(); // Update the UI after purchas
+            GameWin();
         }
         else
         {
-            Debug.Log("Not enough crystals to purchase sword.");
+            Debug.Log("Not enough crystals to win.");
         }
+    }
+    void GameWin()
+    {
+        Debug.Log("Game Over!"); // Log game over for debugging
+
+        if (gameWinPanel != null)
+        {
+            gameWinPanel.SetActive(true); // Show the Game Over panel
+        }
+
+        Time.timeScale = 0; // Pause the game
+
+        // Trigger the game over event
+        onGameWin?.Invoke();
     }
 }
