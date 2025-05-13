@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         // Check if another Player instance already exists
-        if (FindObjectsOfType<Player>().Length > 1)
+        if (FindObjectsByType<Player>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject); // Destroy the duplicate Player instance
             return;

@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class ShopOpen : MonoBehaviour
 {
-
-    [SerializeField] private GameObject shop; // As
+    public GameObject shopPanel; 
 
     void Start()
     {
-        shop = GameObject.Find("ShopPanel");
-        shop.SetActive(false);
+        if (shopPanel != null)
+            shopPanel.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
         {
-            shop.SetActive(true);
+            shopPanel.SetActive(true);
         }
     }
 
@@ -23,7 +22,7 @@ public class ShopOpen : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            shop.SetActive(false);
+            shopPanel.SetActive(false);
         }
     }
 }
