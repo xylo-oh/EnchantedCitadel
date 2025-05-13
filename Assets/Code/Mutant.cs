@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Mutant : MonoBehaviour
 {
-    private int health = 10;
+    private int health = 20;
     private Transform[] waypoints; // Store the assigned waypoints
 
     void Start()
